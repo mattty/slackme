@@ -13,12 +13,12 @@ helpers do
     JSON.parse ENV['ROOM_MAPPINGS']
   end
   def authed_users
-    JSON.parse ENB['AUTHED_USERS']
+    JSON.parse ENV['AUTHED_USERS']
   end
 end
 
 get '/' do
-  200
+  erb :index
 end
 
 post '/from_groupme' do
