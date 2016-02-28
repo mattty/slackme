@@ -18,7 +18,7 @@ helpers do
 end
 
 get '/' do
-  erb :index
+  redirect 'https://github.com/mattty/slackme'
 end
 
 post '/from_groupme' do
@@ -26,7 +26,6 @@ post '/from_groupme' do
   msg = JSON.parse(message)
   return if msg['name'] == authed_users['groupme']
   fm = {
-    channel: '#general',
     username: msg['name'],
     text: msg['text'],
     icon_url: msg['avatar_url'],
