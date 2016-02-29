@@ -17,6 +17,7 @@ GEM
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     mime-types (2.99.1)
+    mixpanel-ruby (2.2.0)
     multi_json (1.11.2)
     multipart-post (2.0.0)
     netrc (0.11.0)
@@ -42,6 +43,7 @@ PLATFORMS
 
 DEPENDENCIES
   groupme
+  mixpanel-ruby
   rest-client
   sinatra
 

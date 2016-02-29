@@ -1,6 +1,9 @@
 require 'sinatra'
 require 'groupme'
 require 'rest-client'
+require 'mixpanel-ruby'
+
+enable :sessions
 
 helpers do
   def groupme_client
@@ -15,9 +18,15 @@ helpers do
   def authed_users
     JSON.parse ENV['AUTHED_USERS']
   end
+  def mixpanel_tracker
+    @mixpanel_tracker ||= Mixpanel::Tracker.new(ENV['MIXPANEL_TOKEN'])
+  end
 end
 
 get '/' do
+  uuid = session[:uuid] || SecureRandom.uuid
+  session[:uuid] = uuid
+  mixpanel_tracker.track(uuid, 'Homepage view')
   redirect 'https://github.com/mattty/slackme'
 end
 
